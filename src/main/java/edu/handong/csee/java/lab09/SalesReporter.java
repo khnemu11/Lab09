@@ -10,18 +10,23 @@ public class SalesReporter {
 	
 	public void getData(){
 		Scanner myScanner = new Scanner(System.in);
-		team = new SalesAssociate[numberOfAssociates];
 		
 		System.out.print("Enter number of sales associate: ");
 		numberOfAssociates=myScanner.nextInt();
-
+		
+		team= new SalesAssociate[numberOfAssociates] ;
+		
 		for(int i=0; i<numberOfAssociates;i++) {
+			team[i]=new SalesAssociate();
+
 			System.out.println("Enter data for associate number "+(i+1));
-			System.out.println("Enter name of sales associate: ");
+			System.out.print("Enter name of sales associate: ");
+			team[i].setName(myScanner.nextLine());
 			team[i].setName(myScanner.nextLine());
 			
-			System.out.println("Enter associate's sales: $");
+			System.out.print("Enter associate's sales: $");
 			team[i].setSales(myScanner.nextDouble());
+			
 		}
 	}
 	public void computeStats(){
@@ -40,14 +45,14 @@ public class SalesReporter {
 		}
 	}
 	public void displayResults() {
-		System.out.print("Average sales per associate is $"+averageSales);
-		System.out.print("The highest sales figure is $"+highestSales);
+		System.out.println("Average sales per associate is $"+averageSales);
+		System.out.println("The highest sales figure is $"+highestSales);
 		for(int i=0; i<numberOfAssociates;i++) {
 			if(team[i].sales==highestSales) {
 				System.out.println("The following had the highest sales:");
-				System.out.println("name:"+team[i].name);
+				System.out.println("name: "+team[i].name);
 				System.out.println("Sales: $"+team[i].sales);
-				System.out.println("$"+(team[i].sales-averageSales)+"above the average.");
+				System.out.println("$"+Math.round(team[i].sales-averageSales)+" above the average.");
 				break;
 			}
 		}
@@ -55,11 +60,11 @@ public class SalesReporter {
 		for(int i=0;i<numberOfAssociates;i++) {
 			if(team[i].sales==highestSales) continue;
 			else {
-			System.out.println("name:"+team[i].name);
+			System.out.println("name: "+team[i].name);
 			System.out.println("Sales: $"+team[i].sales);
 			
-			if(team[i].sales>averageSales)	System.out.println("$"+(team[i].sales-averageSales)+"above the average.");
-			else System.out.println("$"+(averageSales-team[i].sales)+"below the average.");
+			if(team[i].sales>averageSales)	System.out.println("$"+Math.round(team[i].sales-averageSales)+" above the average.");
+			else System.out.println("$"+Math.round(averageSales-team[i].sales)+" below the average.");
 			}
 		}
 	

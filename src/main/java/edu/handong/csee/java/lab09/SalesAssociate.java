@@ -1,9 +1,9 @@
 package edu.handong.csee.java.lab09;
 
 public class SalesAssociate {
-	String name;
-	double sales;
-	
+	String name=null;
+	double sales=0;
+
 	void setName(String name) {
 		this.name=name;
 	}

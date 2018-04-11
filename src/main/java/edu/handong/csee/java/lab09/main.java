@@ -11,6 +11,4 @@ public class main {
 	
 }
 
-
-
-
+//this code is no working because of
